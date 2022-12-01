@@ -20,5 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./
+        name: Use action
         with:
-          milliseconds: 1000
+          haystack: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam'
