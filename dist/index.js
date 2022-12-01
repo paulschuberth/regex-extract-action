@@ -17,7 +17,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.extractor = void 0;
-function extractor(haystack, needle = /[A-Z]+-\d+/gmi) {
+function extractor(haystack, needle = /[A-Z]+-\d+/gim) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise(resolve => {
             var _a;
@@ -72,15 +72,17 @@ const extractor_1 = __nccwpck_require__(609);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            //   const ms: string = core.getInput('milliseconds')
-            //   core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
-            //   core.debug(new Date().toTimeString())
-            //   await wait(parseInt(ms, 10))
-            //   core.debug(new Date().toTimeString())
-            //   core.setOutput('time', new Date().toTimeString())
             const haystack = core.getInput('haystack');
-            const matches = yield (0, extractor_1.extractor)(haystack);
-            // core.setOutput('matches', matches)
+            let customNeedle = core.getInput('needle');
+            let matches;
+            if (!customNeedle) {
+                customNeedle = '[A-Z]+-d';
+                matches = yield (0, extractor_1.extractor)(haystack);
+            }
+            else {
+                matches = yield (0, extractor_1.extractor)(haystack, new RegExp(customNeedle));
+            }
+            core.setOutput('matches', matches);
         }
         catch (error) {
             if (error instanceof Error)
