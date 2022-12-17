@@ -11,3 +11,4 @@ jobs:
         with:
           release-type: node
           package-name: regex-extract-action
+          token: ${{ secrets.PAT }}
