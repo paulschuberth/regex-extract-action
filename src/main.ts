@@ -1,17 +1,21 @@
 import * as core from '@actions/core'
-import {extractor} from './extractor'
+import {extractor, Mode} from './extractor'
 
 export async function run(): Promise<void> {
   try {
     const haystack: string = core.getInput('haystack')
+    const mode = core.getInput('mode') as Mode
     let customNeedle: string = core.getInput('needle')
 
-    let matches: string[]
+    let matches: string[] | string
     if (!customNeedle) {
       customNeedle = '[A-Z]+-d'
-      matches = await extractor(haystack)
+      matches = await extractor(haystack, {mode})
     } else {
-      matches = await extractor(haystack, new RegExp(customNeedle))
+      matches = await extractor(haystack, {
+        needle: new RegExp(customNeedle),
+        mode
+      })
     }
 
     core.setOutput('matches', matches)

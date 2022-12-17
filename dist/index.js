@@ -16,18 +16,36 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.extractor = void 0;
-function extractor(haystack, needle = /[A-Z]+-\d+/gim) {
+exports.JIRA_ISSUE = exports.extractor = void 0;
+function extractor(haystack, options) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise(resolve => {
-            var _a;
-            const matches = (_a = haystack.match(needle)) !== null && _a !== void 0 ? _a : [];
+            var _a, _b, _c;
+            const needle = (_a = options === null || options === void 0 ? void 0 : options.needle) !== null && _a !== void 0 ? _a : exports.JIRA_ISSUE;
+            const matches = (_b = haystack.match(needle)) !== null && _b !== void 0 ? _b : [];
+            const mode = (_c = options === null || options === void 0 ? void 0 : options.mode) !== null && _c !== void 0 ? _c : 'unique';
+            if (mode === 'first') {
+                const firstMatch = matches[0];
+                if (firstMatch) {
+                    resolve([firstMatch]);
+                }
+                else {
+                    resolve([]);
+                }
+                return;
+            }
+            if (mode === 'all') {
+                resolve(matches);
+                return;
+            }
+            // Default
             const uniques = [...new Set(matches)];
             resolve(uniques);
         });
     });
 }
 exports.extractor = extractor;
+exports.JIRA_ISSUE = /[A-Z]+-\d+/gim;
 
 
 /***/ }),
@@ -77,14 +95,18 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const haystack = core.getInput('haystack');
+            const mode = core.getInput('mode');
             let customNeedle = core.getInput('needle');
             let matches;
             if (!customNeedle) {
                 customNeedle = '[A-Z]+-d';
-                matches = yield (0, extractor_1.extractor)(haystack);
+                matches = yield (0, extractor_1.extractor)(haystack, { mode });
             }
             else {
-                matches = yield (0, extractor_1.extractor)(haystack, new RegExp(customNeedle));
+                matches = yield (0, extractor_1.extractor)(haystack, {
+                    needle: new RegExp(customNeedle),
+                    mode
+                });
             }
             core.setOutput('matches', matches);
         }

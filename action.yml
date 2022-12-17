@@ -1,6 +1,6 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Regex Extract Action'
+description: 'Searches for matches of the given regex from the input and returns them as a JSON list.'
+author: 'Paul Schuberth'
 inputs:
   haystack: # change this
     required: true
@@ -9,6 +9,13 @@ inputs:
     required: false
     default: '/[A-Z]+-\d+/gmi'
     description: 'The regex that is used to find matches in `heaystack`'
+  mode:
+    required: false
+    default: 'unique'
+    description: 'One of `all`, `unique`, `first`.'
+outputs:
+  matches:
+    description: 'A JSON list of all found matches.Extraction'
 runs:
   using: 'node16'
   main: 'dist/index.js'
