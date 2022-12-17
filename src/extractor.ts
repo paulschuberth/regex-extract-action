@@ -1,8 +1,6 @@
-import { relative } from "path/posix"
-
 interface ExtractorOptions {
-  mode?: Mode,
-  needle?: RegExp,
+  mode?: Mode
+  needle?: RegExp
 }
 
 export async function extractor(
@@ -12,9 +10,9 @@ export async function extractor(
   return new Promise(resolve => {
     const needle = options?.needle ?? JIRA_ISSUE
     const matches = haystack.match(needle) ?? []
-    const mode = options?.mode ?? "unique"
+    const mode = options?.mode ?? 'unique'
 
-    if (mode == "first") {
+    if (mode === 'first') {
       const firstMatch = matches[0]
       if (firstMatch) {
         resolve([firstMatch])
@@ -24,7 +22,7 @@ export async function extractor(
       return
     }
 
-    if (mode == "all") {
+    if (mode === 'all') {
       resolve(matches)
       return
     }
@@ -35,6 +33,6 @@ export async function extractor(
   })
 }
 
-export type Mode = "unique" | "all" | "first"
+export type Mode = 'unique' | 'all' | 'first'
 
-export const JIRA_ISSUE = /[A-Z]+-\d+/gmi
+export const JIRA_ISSUE = /[A-Z]+-\d+/gim

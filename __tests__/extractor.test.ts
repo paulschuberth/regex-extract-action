@@ -1,7 +1,7 @@
 import {extractor, JIRA_ISSUE, Mode} from '../src/extractor'
 import {expect, test, beforeEach} from '@jest/globals'
 import {readFileSync} from 'fs'
-import { it } from 'node:test'
+import {it} from 'node:test'
 
 const core = require('@actions/core')
 
@@ -28,30 +28,28 @@ test('deduplicates matches by default', async () => {
 
 test('returns empty list for no matches in first mode', async () => {
   const content = readFileSync('resources/single.txt', 'utf-8')
-  const actual = await extractor(content, {needle: /NOMATCH/gm, mode: "first"})
+  const actual = await extractor(content, {needle: /NOMATCH/gm, mode: 'first'})
   expect(actual).toHaveLength(0)
   expect(actual).toBeInstanceOf(Array)
-});
+})
 
 test('returns empty list for no matches in all mode', async () => {
   const content = readFileSync('resources/single.txt', 'utf-8')
-  const actual = await extractor(content, {needle: /NOMATCH/gm, mode: "all"})
+  const actual = await extractor(content, {needle: /NOMATCH/gm, mode: 'all'})
   expect(actual).toHaveLength(0)
   expect(actual).toBeInstanceOf(Array)
-});
+})
 
 test('returns empty list for no matches in unique mode', async () => {
   const content = readFileSync('resources/single.txt', 'utf-8')
-  const actual = await extractor(content, {needle: /NOMATCH/gm, mode: "unique"})
+  const actual = await extractor(content, {needle: /NOMATCH/gm, mode: 'unique'})
   expect(actual).toHaveLength(0)
   expect(actual).toBeInstanceOf(Array)
-});
-
+})
 
 test('can return only the first match', async () => {
   const content = readFileSync('resources/multi.txt', 'utf-8')
-  const actual = await extractor(content, {mode: "first"})
+  const actual = await extractor(content, {mode: 'first'})
   expect(actual).toContain('ABC-123')
   expect(actual).toHaveLength(1)
-});
-
+})

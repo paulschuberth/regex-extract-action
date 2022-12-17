@@ -72,7 +72,7 @@ test('reads mode all from input', async () => {
   expect(output['matches']).toContain('ABC-123')
   expect(output['matches']).toContain('ABC-321')
   expect(output['matches']).toContain('ABC-42')
-});
+})
 
 test('reads mode unique from input', async () => {
   // Arrange
@@ -97,7 +97,7 @@ test('reads mode unique from input', async () => {
   expect(output['matches']).toContain('ABC-123')
   expect(output['matches']).toContain('ABC-321')
   expect(output['matches']).toContain('ABC-42')
-});
+})
 
 test('reads mode first from input', async () => {
   // Arrange
@@ -120,4 +120,4 @@ test('reads mode first from input', async () => {
   // Assert
   expect(output['matches']).toHaveLength(1)
   expect(output['matches']).toContain('ABC-123')
-});
+})
