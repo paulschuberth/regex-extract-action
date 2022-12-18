@@ -22,6 +22,8 @@ export async function run(): Promise<void> {
     core.info(`Matches: ${matches}`)
     core.endGroup()
 
+    const hasMatches = matches.length > 0
+    core.setOutput('has_matches', hasMatches)
     core.setOutput('matches', matches)
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
