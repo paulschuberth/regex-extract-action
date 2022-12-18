@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0](https://github.com/paulschuberth/regex-extract-action/compare/v0.1.2...v1.0.0) (2022-12-18)
+
+
+### Features
+
+* Add output `has_matches` ([bc6868a](https://github.com/paulschuberth/regex-extract-action/commit/bc6868a0899206030c5a5c9db52e934a0649e3bb))
+
 ## [0.1.2](https://github.com/paulschuberth/regex-extract-action/compare/v0.1.1...v0.1.2) (2022-12-18)
 
 
