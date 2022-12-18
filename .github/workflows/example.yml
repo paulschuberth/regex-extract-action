@@ -9,7 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Using defaults
-        uses: paulschuberth/regex-extract-action@main
+        # x-release-please-start-version
+        uses: paulschuberth/regex-extract-action@v0.1.0
+        # x-release-please-end
         id: example-default
         with:
           haystack: ${{ github.event.issue.body }} 
