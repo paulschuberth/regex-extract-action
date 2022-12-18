@@ -5,8 +5,7 @@ import * as action from '../src/main'
 
 const core = require('@actions/core')
 
-// shows how the runner will run a javascript action with env / stdout protocol
-test('sets output', async () => {
+test('sets matches output', async () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
   let input: any = {
@@ -26,6 +25,50 @@ test('sets output', async () => {
 
   // Assert
   expect(output['matches']).toHaveLength(3)
+})
+
+test('sets has_matches output to `true` for matches', async () => {
+  // Arrange
+  const content = readFileSync('resources/multi.txt', 'utf-8')
+  let input: any = {
+    needle: JIRA_ISSUE,
+    haystack: content
+  }
+  core.getInput = (name: any) => {
+    return input[name]
+  }
+  let output: any = {}
+  core.setOutput = (name: string, value: any) => {
+    output[name] = value
+  }
+
+  // Act
+  await action.run()
+
+  // Assert
+  expect(output['has_matches']).toBe(true)
+})
+
+test('sets has_matches output to `false` for no matches', async () => {
+  // Arrange
+  const content = readFileSync('resources/multi.txt', 'utf-8')
+  let input: any = {
+    needle: 'NOMATCH',
+    haystack: content
+  }
+  core.getInput = (name: any) => {
+    return input[name]
+  }
+  let output: any = {}
+  core.setOutput = (name: string, value: any) => {
+    output[name] = value
+  }
+
+  // Act
+  await action.run()
+
+  // Assert
+  expect(output['has_matches']).toBe(false)
 })
 
 test('reads custom regex from input', async () => {

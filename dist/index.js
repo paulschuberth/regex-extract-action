@@ -109,6 +109,8 @@ function run() {
             core.startGroup('Outputs');
             core.info(`Matches: ${matches}`);
             core.endGroup();
+            const hasMatches = matches.length > 0;
+            core.setOutput('has_matches', hasMatches);
             core.setOutput('matches', matches);
         }
         catch (error) {
