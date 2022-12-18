@@ -13,4 +13,4 @@ jobs:
           package-name: regex-extract-action
           token: ${{ secrets.PAT }}
           extra-files: |
-            .github/workflows/example.yml
+            ./.github/workflows/example.yml
