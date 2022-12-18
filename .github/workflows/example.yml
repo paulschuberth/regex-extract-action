@@ -21,7 +21,7 @@ jobs:
     needs: [ extract-using-default-settings ]
     strategy:
       matrix:
-        issue: ${{ fromJson(needs.inspect-issue-body.outputs.issues) }}
+        issue: ${{ fromJson(needs.extract-using-default-settings.outputs.issues) }}
     steps:
       - name: Use output of default settings
         uses: actions/github-script@v6

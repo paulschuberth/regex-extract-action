@@ -15,9 +15,9 @@ inputs:
     description: 'One of `all`, `unique`, `first`.'
 outputs:
   matches:
-    description: 'A JSON list of all found matches.Extraction'
+    description: 'A JSON list of all found matches'
   has_matches:
-    description: 'Indicates whether any matches were found. Either `true` or `false`'.
+    description: 'Indicates whether any matches were found. Either `true` or `false`'
 runs:
   using: 'node16'
   main: 'dist/index.js'
