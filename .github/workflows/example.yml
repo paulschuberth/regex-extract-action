@@ -5,16 +5,24 @@ on:
     types: [ labeled ]
 
 jobs:
-  inspect-issue-body:
+  extract-using-default-settings:
     runs-on: ubuntu-latest
     steps:
       - name: Using defaults
         uses: paulschuberth/regex-extract-action@main
         id: example-default
         with:
-          haystack: |
-            ${{ github.event.issue.body }}
-       
+          haystack: ${{ github.event.issue.body }} 
+    outputs:
+      issues: ${{ steps.example-default.outputs.matches }}
+
+  use-default-matches:
+    runs-on: ubuntu-latest
+    needs: [ extract-using-default-settings ]
+    strategy:
+      matrix:
+        issue: ${{ fromJson(needs.inspect-issue-body.outputs.issues) }}
+    steps:
       - name: Use output of default settings
         uses: actions/github-script@v6
         with:
@@ -23,5 +31,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: ${{ steps.example-default.outputs.matches }}
+              body: `Found issue ${{ matrix.issue }}`
             })

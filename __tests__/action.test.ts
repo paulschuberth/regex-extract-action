@@ -6,7 +6,7 @@ import * as action from '../src/main'
 const core = require('@actions/core')
 
 // shows how the runner will run a javascript action with env / stdout protocol
-test('sets output', () => {
+test('sets output', async () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
   let input: any = {
@@ -22,13 +22,13 @@ test('sets output', () => {
   }
 
   // Act
-  action.run()
+  await action.run()
 
   // Assert
   expect(output['matches']).toHaveLength(3)
 })
 
-test('reads custom regex from input', () => {
+test('reads custom regex from input', async () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
   let input: any = {
@@ -44,14 +44,14 @@ test('reads custom regex from input', () => {
   }
 
   // Act
-  action.run()
+  await action.run()
 
   // Assert
   expect(output['matches']).toHaveLength(1)
   expect(output['matches']).toContain('Lorem')
 })
 
-test('reads mode all from input', () => {
+test('reads mode all from input', async () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
   let input: any = {
@@ -68,7 +68,7 @@ test('reads mode all from input', () => {
   }
 
   // Act
-  action.run()
+  await action.run()
 
   // Assert
   expect(output['matches']).toHaveLength(4)
@@ -77,7 +77,7 @@ test('reads mode all from input', () => {
   expect(output['matches']).toContain('ABC-42')
 })
 
-test('reads mode unique from input', () => {
+test('reads mode unique from input', async () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
   let input: any = {
@@ -94,7 +94,7 @@ test('reads mode unique from input', () => {
   }
 
   // Act
-  action.run()
+  await action.run()
 
   // Assert
   expect(output['matches']).toHaveLength(3)
@@ -103,7 +103,7 @@ test('reads mode unique from input', () => {
   expect(output['matches']).toContain('ABC-42')
 })
 
-test('reads mode first from input', () => {
+test('reads mode first from input', async () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
   let input: any = {
@@ -120,7 +120,7 @@ test('reads mode first from input', () => {
   }
 
   // Act
-  action.run()
+  await action.run()
 
   // Assert
   expect(output['matches']).toHaveLength(1)
