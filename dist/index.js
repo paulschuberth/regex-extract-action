@@ -2,45 +2,10 @@ require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 609:
-<<<<<<< HEAD
 /***/ (function(__unused_webpack_module, exports) {
 
 "use strict";
 
-=======
-<<<<<<< HEAD
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-=======
-/***/ (function(__unused_webpack_module, exports) {
-
-"use strict";
-
->>>>>>> 00ebd75 (chore: Add example workflow)
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -49,42 +14,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
-<<<<<<< HEAD
-=======
->>>>>>> parent of 3a3b9a6 (Make extractor synchronous)
->>>>>>> 00ebd75 (chore: Add example workflow)
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.JIRA_ISSUE = exports.extractor = void 0;
 function extractor(haystack, options) {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    var _a, _b, _c;
-    const needle = (_a = options === null || options === void 0 ? void 0 : options.needle) !== null && _a !== void 0 ? _a : exports.JIRA_ISSUE;
-    const matches = (_b = haystack.match(needle)) !== null && _b !== void 0 ? _b : [];
-    const mode = (_c = options === null || options === void 0 ? void 0 : options.mode) !== null && _c !== void 0 ? _c : 'unique';
-    core.warning(`Mode: ${mode}`);
-    core.warning(`Haystack: ${haystack}`);
-    core.warning(`Needle: ${needle}`);
-    core.warning(`Matches: ${matches}`);
-    if (mode === 'first') {
-        const firstMatch = matches[0];
-        if (firstMatch) {
-            return [firstMatch];
-        }
-        else {
-            return [];
-        }
-    }
-    if (mode === 'all') {
-        return matches;
-    }
-    // Default
-    const uniques = [...new Set(matches)];
-    return uniques;
-=======
->>>>>>> 00ebd75 (chore: Add example workflow)
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise(resolve => {
             var _a, _b, _c;
@@ -110,10 +43,6 @@ function extractor(haystack, options) {
             resolve(uniques);
         });
     });
-<<<<<<< HEAD
-=======
->>>>>>> parent of 3a3b9a6 (Make extractor synchronous)
->>>>>>> 00ebd75 (chore: Add example workflow)
 }
 exports.extractor = extractor;
 exports.JIRA_ISSUE = /[A-Z]+-\d+/gim;
@@ -163,17 +92,10 @@ exports.run = void 0;
 const core = __importStar(__nccwpck_require__(186));
 const extractor_1 = __nccwpck_require__(609);
 function run() {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> 00ebd75 (chore: Add example workflow)
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const haystack = core.getInput('haystack');
             const mode = core.getInput('mode');
-<<<<<<< HEAD
             const customNeedle = core.getInput('needle');
             const matches = yield (0, extractor_1.extractor)(haystack, {
                 needle: new RegExp(customNeedle, 'gmi'),
@@ -188,31 +110,12 @@ function run() {
             core.info(`Matches: ${matches}`);
             core.endGroup();
             core.setOutput('matches', matches);
-=======
-            let customNeedle = core.getInput('needle');
-            if (!customNeedle) {
-                customNeedle = '[A-Z]+-d';
-                const matches = yield (0, extractor_1.extractor)(haystack, { mode });
-                core.setOutput('matches', matches);
-            }
-            else {
-                const matches = yield (0, extractor_1.extractor)(haystack, {
-                    needle: new RegExp(customNeedle),
-                    mode
-                });
-                core.setOutput('matches', matches);
-            }
->>>>>>> 00ebd75 (chore: Add example workflow)
         }
         catch (error) {
             if (error instanceof Error)
                 core.setFailed(error.message);
         }
     });
-<<<<<<< HEAD
-=======
->>>>>>> parent of 3a3b9a6 (Make extractor synchronous)
->>>>>>> 00ebd75 (chore: Add example workflow)
 }
 exports.run = run;
 run();
