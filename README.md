@@ -28,3 +28,7 @@ The default value is `unique`. This input is optional.
 ### matches
 
 A JSON list of all matches. The list is empty if there are no matches.
+
+## Example usage
+
+The [example workflow](https://github.com/paulschuberth/regex-extract-action/blob/main/.github/workflows/example.yml) in this repo shows one example of how to use this action.
