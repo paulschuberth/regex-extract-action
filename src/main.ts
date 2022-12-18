@@ -7,18 +7,17 @@ export async function run(): Promise<void> {
     const mode = core.getInput('mode') as Mode
     let customNeedle: string = core.getInput('needle')
 
-    let matches: string[] | string
     if (!customNeedle) {
       customNeedle = '[A-Z]+-d'
-      matches = await extractor(haystack, {mode})
+      const matches = await extractor(haystack, {mode})
+      core.setOutput('matches', matches)
     } else {
-      matches = await extractor(haystack, {
+      const matches = await extractor(haystack, {
         needle: new RegExp(customNeedle),
         mode
       })
+      core.setOutput('matches', matches)
     }
-
-    core.setOutput('matches', matches)
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
