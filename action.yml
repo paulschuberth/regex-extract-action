@@ -8,7 +8,7 @@ inputs:
   needle:
     required: false
     default: '[A-Z]+-\d+'
-    description: 'The regex that is used to find matches in `heaystack`'
+    description: 'The regex that is used to find matches in `haystack`'
   mode:
     required: false
     default: 'unique'
