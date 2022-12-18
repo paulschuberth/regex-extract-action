@@ -9,10 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Using defaults
-        uses: paulschuberth/regex-extract-action@v0.1.1
+        uses: paulschuberth/regex-extract-action@main
         id: example-default
         with:
-          haystack: ${{ github.event.issue.body }}
+          haystack: |
+            ${{ github.event.issue.body }}
        
       - name: Use output of default settings
         uses: actions/github-script@v6

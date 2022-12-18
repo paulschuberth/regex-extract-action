@@ -7,7 +7,7 @@ inputs:
     description: 'The string in which to search for matches'
   needle:
     required: false
-    default: '/[A-Z]+-\d+/gmi'
+    default: '[A-Z]+-\d+'
     description: 'The regex that is used to find matches in `heaystack`'
   mode:
     required: false

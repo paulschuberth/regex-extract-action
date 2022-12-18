@@ -1,36 +1,39 @@
+import * as core from '@actions/core'
+
 interface ExtractorOptions {
   mode?: Mode
   needle?: RegExp
 }
 
-export async function extractor(
+export function extractor(
   haystack: string,
   options?: ExtractorOptions
-): Promise<string[]> {
-  return new Promise(resolve => {
-    const needle = options?.needle ?? JIRA_ISSUE
-    const matches = haystack.match(needle) ?? []
-    const mode = options?.mode ?? 'unique'
+): string[] {
+  const needle = options?.needle ?? JIRA_ISSUE
+  const matches = haystack.match(needle) ?? []
+  const mode = options?.mode ?? 'unique'
 
-    if (mode === 'first') {
-      const firstMatch = matches[0]
-      if (firstMatch) {
-        resolve([firstMatch])
-      } else {
-        resolve([])
-      }
-      return
+  core.warning(`Mode: ${mode}`)
+  core.warning(`Haystack: ${haystack}`)
+  core.warning(`Needle: ${needle}`)
+  core.warning(`Matches: ${matches}`)
+
+  if (mode === 'first') {
+    const firstMatch = matches[0]
+    if (firstMatch) {
+      return [firstMatch]
+    } else {
+      return []
     }
+  }
 
-    if (mode === 'all') {
-      resolve(matches)
-      return
-    }
+  if (mode === 'all') {
+    return matches
+  }
 
-    // Default
-    const uniques = [...new Set(matches)]
-    resolve(uniques)
-  })
+  // Default
+  const uniques = [...new Set(matches)]
+  return uniques
 }
 
 export type Mode = 'unique' | 'all' | 'first'

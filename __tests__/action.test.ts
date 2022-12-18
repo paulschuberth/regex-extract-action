@@ -1,14 +1,16 @@
 import {expect, test, beforeEach} from '@jest/globals'
 import {access, readFileSync} from 'fs'
+import {JIRA_ISSUE} from '../src/extractor'
 import * as action from '../src/main'
 
 const core = require('@actions/core')
 
 // shows how the runner will run a javascript action with env / stdout protocol
-test('sets output', async () => {
+test('sets output', () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
   let input: any = {
+    needle: JIRA_ISSUE,
     haystack: content
   }
   core.getInput = (name: any) => {
@@ -20,13 +22,13 @@ test('sets output', async () => {
   }
 
   // Act
-  await action.run()
+  action.run()
 
   // Assert
   expect(output['matches']).toHaveLength(3)
 })
 
-test('reads custom regex from input', async () => {
+test('reads custom regex from input', () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
   let input: any = {
@@ -42,18 +44,19 @@ test('reads custom regex from input', async () => {
   }
 
   // Act
-  await action.run()
+  action.run()
 
   // Assert
   expect(output['matches']).toHaveLength(1)
   expect(output['matches']).toContain('Lorem')
 })
 
-test('reads mode all from input', async () => {
+test('reads mode all from input', () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
   let input: any = {
     haystack: content,
+    needle: JIRA_ISSUE,
     mode: 'all'
   }
   core.getInput = (name: any) => {
@@ -65,7 +68,7 @@ test('reads mode all from input', async () => {
   }
 
   // Act
-  await action.run()
+  action.run()
 
   // Assert
   expect(output['matches']).toHaveLength(4)
@@ -74,11 +77,12 @@ test('reads mode all from input', async () => {
   expect(output['matches']).toContain('ABC-42')
 })
 
-test('reads mode unique from input', async () => {
+test('reads mode unique from input', () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
   let input: any = {
     haystack: content,
+    needle: JIRA_ISSUE,
     mode: 'unique'
   }
   core.getInput = (name: any) => {
@@ -90,7 +94,7 @@ test('reads mode unique from input', async () => {
   }
 
   // Act
-  await action.run()
+  action.run()
 
   // Assert
   expect(output['matches']).toHaveLength(3)
@@ -99,11 +103,12 @@ test('reads mode unique from input', async () => {
   expect(output['matches']).toContain('ABC-42')
 })
 
-test('reads mode first from input', async () => {
+test('reads mode first from input', () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
   let input: any = {
     haystack: content,
+    needle: JIRA_ISSUE,
     mode: 'first'
   }
   core.getInput = (name: any) => {
@@ -115,7 +120,7 @@ test('reads mode first from input', async () => {
   }
 
   // Act
-  await action.run()
+  action.run()
 
   // Assert
   expect(output['matches']).toHaveLength(1)
