@@ -97,18 +97,18 @@ function run() {
             const haystack = core.getInput('haystack');
             const mode = core.getInput('mode');
             let customNeedle = core.getInput('needle');
-            let matches;
             if (!customNeedle) {
                 customNeedle = '[A-Z]+-d';
-                matches = yield (0, extractor_1.extractor)(haystack, { mode });
+                const matches = yield (0, extractor_1.extractor)(haystack, { mode });
+                core.setOutput('matches', matches);
             }
             else {
-                matches = yield (0, extractor_1.extractor)(haystack, {
+                const matches = yield (0, extractor_1.extractor)(haystack, {
                     needle: new RegExp(customNeedle),
                     mode
                 });
+                core.setOutput('matches', matches);
             }
-            core.setOutput('matches', matches);
         }
         catch (error) {
             if (error instanceof Error)
