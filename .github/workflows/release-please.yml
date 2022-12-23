@@ -11,9 +11,6 @@ jobs:
         with:
           release-type: node
           package-name: regex-extract-action
-          token: ${{ secrets.PAT }}
-          extra-files: |
-            .github/workflows/example.yml
           changelog-types: >-
             [
             {"type":"feat","section":"Features","hidden":false},
