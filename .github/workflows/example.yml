@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Using defaults
-        uses: vwdfive/regex-extract-action@v1.0.1
+        uses: vwdfive/regex-extract-action@v1
         id: example-default
         with:
           haystack: ${{ github.event.issue.body }} 
