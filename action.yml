@@ -1,6 +1,9 @@
 name: 'Regex Extract Action'
 description: 'Searches for matches of the given regex from the input and returns them as a JSON list.'
 author: 'Paul Schuberth'
+branding:
+  color: blue
+  icon: file-text
 inputs:
   haystack: # change this
     required: true
