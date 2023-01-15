@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/paulschuberth/regex-extract-action/compare/v1.0.2...v1.0.3) (2023-01-15)
+
+
+### Bug Fixes 🐛
+
+* **actions:** Run update major version tag upon new release ([aa659f5](https://github.com/paulschuberth/regex-extract-action/commit/aa659f518ac28aa00902cf59fec44f64d1b6860b))
+
 ## [1.0.2](https://github.com/paulschuberth/regex-extract-action/compare/v1.0.1...v1.0.2) (2023-01-15)
 
 
