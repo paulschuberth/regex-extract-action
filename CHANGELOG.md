@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.6](https://github.com/paulschuberth/regex-extract-action/compare/v1.0.5...v1.0.6) (2023-01-25)
+
+
+### Miscellaneous 🧹
+
+* **deps-dev:** bump @vercel/ncc from 0.36.0 to 0.36.1 ([b1aa066](https://github.com/paulschuberth/regex-extract-action/commit/b1aa066c4a9846fc3a1b6906dcca5b981a47e42f))
+
 ## [1.0.5](https://github.com/paulschuberth/regex-extract-action/compare/v1.0.4...v1.0.5) (2023-01-23)
 
 
