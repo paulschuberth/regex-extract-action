@@ -6,6 +6,7 @@
 name: Check dist/
 
 on:
+  merge_group:
   push:
     branches:
       - main
