@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.8](https://github.com/paulschuberth/regex-extract-action/compare/v1.0.7...v1.0.8) (2023-02-12)
+
+
+### Miscellaneous 🧹
+
+* **deps-dev:** bump @types/node from 18.11.18 to 18.13.0 ([79ab613](https://github.com/paulschuberth/regex-extract-action/commit/79ab613ba775848ed4eba173fd9d5a72ae10900d))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin ([a579b2c](https://github.com/paulschuberth/regex-extract-action/commit/a579b2ce36939258c04ed7d101c8ef5b384fcb6f))
+* **deps-dev:** bump @typescript-eslint/parser from 5.50.0 to 5.51.0 ([c814332](https://github.com/paulschuberth/regex-extract-action/commit/c8143322900c8c9e24ba0d8330331a67df95c4da))
+* **deps-dev:** bump eslint from 8.33.0 to 8.34.0 ([97f6861](https://github.com/paulschuberth/regex-extract-action/commit/97f68613c29f9afe4e46132334f175386c9f1cc6))
+* **deps-dev:** bump prettier from 2.8.3 to 2.8.4 ([ceb3de5](https://github.com/paulschuberth/regex-extract-action/commit/ceb3de57b462c41199352ea8e295f5ccb17baaff))
+* **workflows:** add merge queue triggers ([211a8f4](https://github.com/paulschuberth/regex-extract-action/commit/211a8f4f5e4454097fa40aec47a9a52149d43585))
+
 ## [1.0.7](https://github.com/paulschuberth/regex-extract-action/compare/v1.0.6...v1.0.7) (2023-02-01)
 
 
