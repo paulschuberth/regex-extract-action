@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.0.11](https://github.com/paulschuberth/regex-extract-action/compare/v1.0.10...v1.0.11) (2023-04-04)
+
+
+### Miscellaneous 🧹
+
+* **deps-dev:** bump @types/node from 18.14.4 to 18.14.6 ([5b8dd00](https://github.com/paulschuberth/regex-extract-action/commit/5b8dd00324f8a156e2c4c7d425ee599514733ca6))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin ([3f9e9e8](https://github.com/paulschuberth/regex-extract-action/commit/3f9e9e8fbea6c0efbde4e9404a059f880f4a5959))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin ([9c67e1c](https://github.com/paulschuberth/regex-extract-action/commit/9c67e1c1bcc544330da384e423584e63c1fd5ab9))
+* **deps-dev:** bump @typescript-eslint/parser from 5.54.0 to 5.54.1 ([a3620b5](https://github.com/paulschuberth/regex-extract-action/commit/a3620b5b5b9afbf114be7e24caccd95ba6595fd0))
+* **deps-dev:** bump @typescript-eslint/parser from 5.54.1 to 5.57.1 ([2a50120](https://github.com/paulschuberth/regex-extract-action/commit/2a50120f047ea05fde550e8725a5b22f6b21526c))
+* **deps-dev:** bump eslint from 8.35.0 to 8.37.0 ([8b0b265](https://github.com/paulschuberth/regex-extract-action/commit/8b0b265090047118789bd1ea40c8e1563f5a62e4))
+* **deps-dev:** bump eslint-plugin-github from 4.6.1 to 4.7.0 ([ae3c416](https://github.com/paulschuberth/regex-extract-action/commit/ae3c4165abcc77519f7a3ffe654cb54b556b78e4))
+* **deps-dev:** bump prettier from 2.8.4 to 2.8.7 ([f559c34](https://github.com/paulschuberth/regex-extract-action/commit/f559c34da633ec8401bf36dbcf6f08bafd3a6e14))
+
 ## [1.0.10](https://github.com/paulschuberth/regex-extract-action/compare/v1.0.9...v1.0.10) (2023-03-03)
 
 
