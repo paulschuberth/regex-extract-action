@@ -34,6 +34,10 @@ If set, this action only searches from the beginning of the original `haystack` 
 
 A JSON list of all matches. The list is empty if there are no matches.
 
+### has_matches
+
+A boolean indicating whether any matches were found.
+
 ## Example usage
 
 The [example workflow](https://github.com/paulschuberth/regex-extract-action/blob/main/.github/workflows/example.yml) in
