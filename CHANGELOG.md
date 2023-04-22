@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.12](https://github.com/paulschuberth/regex-extract-action/compare/v1.0.11...v1.0.12) (2023-04-22)
+
+
+### Miscellaneous 🧹
+
+* **deps-dev:** bump @types/node from 18.14.6 to 18.15.13 ([f2830b6](https://github.com/paulschuberth/regex-extract-action/commit/f2830b6846ae2b682cb7f6dd715b258f2a70fbf6))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin ([c97f050](https://github.com/paulschuberth/regex-extract-action/commit/c97f050a83a437bf959a62d7fd32d3160f961ee5))
+* **deps-dev:** bump @typescript-eslint/parser from 5.57.1 to 5.59.0 ([0d6377b](https://github.com/paulschuberth/regex-extract-action/commit/0d6377ba2a7dc9de804d840439edd89317b6cc07))
+* **deps-dev:** bump eslint from 8.37.0 to 8.39.0 ([8b3f473](https://github.com/paulschuberth/regex-extract-action/commit/8b3f4733241111b003358ccd8237d1590199bcd0))
+
 ## [1.0.11](https://github.com/paulschuberth/regex-extract-action/compare/v1.0.10...v1.0.11) (2023-04-04)
 
 
