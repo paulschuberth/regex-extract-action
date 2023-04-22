@@ -6,15 +6,19 @@ export async function run(): Promise<void> {
     const haystack: string = core.getInput('haystack')
     const mode = core.getInput('mode') as Mode
     const customNeedle: string = core.getInput('needle')
+    const untilInput: string = core.getInput('until')
+    const until = untilInput ? new RegExp(untilInput, 'gmi') : undefined
 
     const matches = await extractor(haystack, {
       needle: new RegExp(customNeedle, 'gmi'),
+      until,
       mode
     })
 
     core.startGroup('Inputs')
     core.info(`Haystack: ${haystack}`)
     core.info(`Needle: ${customNeedle}`)
+    core.info(`Until: ${until}`)
     core.info(`Mode: ${mode}`)
     core.endGroup()
 

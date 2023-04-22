@@ -23,6 +23,11 @@ The mode in which to run this action. Possible values are `all`, `unique`, and `
 action write all matches, unique matches, or only the first match to the `matches` output, respectively.
 The default value is `unique`. This input is optional.
 
+### until
+
+If set, this action only searches from the beginning of the original `haystack` until the first match of
+`until`. This may be a regular expression. If it is not set, the entire haystack is searched. This input is optional.
+
 ## Outputs
 
 ### matches
@@ -31,4 +36,5 @@ A JSON list of all matches. The list is empty if there are no matches.
 
 ## Example usage
 
-The [example workflow](https://github.com/paulschuberth/regex-extract-action/blob/main/.github/workflows/example.yml) in this repo shows one example of how to use this action.
+The [example workflow](https://github.com/paulschuberth/regex-extract-action/blob/main/.github/workflows/example.yml) in
+this repo shows one example of how to use this action.

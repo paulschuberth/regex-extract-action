@@ -17,11 +17,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.JIRA_ISSUE = exports.extractor = void 0;
+function reduceHaystack(haystack, until) {
+    var _a;
+    const matches = haystack.match(until);
+    if (!matches)
+        return haystack;
+    const firstMatch = (_a = matches.at(0)) !== null && _a !== void 0 ? _a : '';
+    const index = haystack.indexOf(firstMatch);
+    return haystack.substring(0, index);
+}
 function extractor(haystack, options) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise(resolve => {
             var _a, _b, _c;
             const needle = (_a = options === null || options === void 0 ? void 0 : options.needle) !== null && _a !== void 0 ? _a : exports.JIRA_ISSUE;
+            if (options === null || options === void 0 ? void 0 : options.until) {
+                haystack = reduceHaystack(haystack, options.until);
+            }
             const matches = (_b = haystack.match(needle)) !== null && _b !== void 0 ? _b : [];
             const mode = (_c = options === null || options === void 0 ? void 0 : options.mode) !== null && _c !== void 0 ? _c : 'unique';
             if (mode === 'first') {
@@ -97,13 +109,17 @@ function run() {
             const haystack = core.getInput('haystack');
             const mode = core.getInput('mode');
             const customNeedle = core.getInput('needle');
+            const untilInput = core.getInput('until');
+            const until = untilInput ? new RegExp(untilInput, 'gmi') : undefined;
             const matches = yield (0, extractor_1.extractor)(haystack, {
                 needle: new RegExp(customNeedle, 'gmi'),
+                until,
                 mode
             });
             core.startGroup('Inputs');
             core.info(`Haystack: ${haystack}`);
             core.info(`Needle: ${customNeedle}`);
+            core.info(`Until: ${until}`);
             core.info(`Mode: ${mode}`);
             core.endGroup();
             core.startGroup('Outputs');

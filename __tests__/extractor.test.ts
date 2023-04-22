@@ -1,7 +1,6 @@
-import {extractor, JIRA_ISSUE, Mode} from '../src/extractor'
-import {expect, test, beforeEach} from '@jest/globals'
+import {extractor} from '../src/extractor'
+import {expect, test} from '@jest/globals'
 import {readFileSync} from 'fs'
-import {it} from 'node:test'
 
 const core = require('@actions/core')
 
@@ -9,6 +8,12 @@ test('finds jira issues by default', async () => {
   const content = readFileSync('resources/single.txt', 'utf-8')
   const actual = await extractor(content)
   expect(actual).toEqual(['ABC-23'])
+})
+
+test('restricts search until first occurrence of until regex', async () => {
+  const content = readFileSync('resources/multi.txt', 'utf-8')
+  const actual = await extractor(content, {until: /voluptua/gm})
+  expect(actual).toEqual(['ABC-123'])
 })
 
 test('can be given different regexp', async () => {
