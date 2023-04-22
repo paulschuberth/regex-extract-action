@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.0](https://github.com/paulschuberth/regex-extract-action/compare/v1.0.12...v1.1.0) (2023-04-22)
+
+
+### Features 🚀
+
+* add `until` input to restrict the text in which to look for matches ([391810a](https://github.com/paulschuberth/regex-extract-action/commit/391810a5db6ab766f3db51f879d9ecc647bfb180))
+
+
+### Miscellaneous 🧹
+
+* add `has_matches` to README.md ([bdab7a5](https://github.com/paulschuberth/regex-extract-action/commit/bdab7a5a71c9c7f4e43df29700260d2882d7eb27))
+* rename package ([1e42016](https://github.com/paulschuberth/regex-extract-action/commit/1e42016ac2ce6a73dec5767f4731702e3cb74573))
+
 ## [1.0.12](https://github.com/paulschuberth/regex-extract-action/compare/v1.0.11...v1.0.12) (2023-04-22)
 
 
