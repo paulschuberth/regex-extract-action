@@ -1,5 +1,5 @@
-import {expect, test, beforeEach} from '@jest/globals'
-import {access, readFileSync} from 'fs'
+import {expect, test} from '@jest/globals'
+import {readFileSync} from 'fs'
 import {JIRA_ISSUE} from '../src/extractor'
 import * as action from '../src/main'
 
@@ -92,6 +92,30 @@ test('reads custom regex from input', async () => {
   // Assert
   expect(output['matches']).toHaveLength(1)
   expect(output['matches']).toContain('Lorem')
+})
+
+test('reads until regex from input', async () => {
+  // Arrange
+  const content = readFileSync('resources/multi.txt', 'utf-8')
+  let input: any = {
+    haystack: content,
+    needle: JIRA_ISSUE,
+    until: 'voluptua'
+  }
+  core.getInput = (name: any) => {
+    return input[name]
+  }
+  let output: any = {}
+  core.setOutput = (name: string, value: any) => {
+    output[name] = value
+  }
+
+  // Act
+  await action.run()
+
+  // Assert
+  expect(output['matches']).toHaveLength(1)
+  expect(output['matches']).toContain('ABC-123')
 })
 
 test('reads mode all from input', async () => {
