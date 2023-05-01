@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.1](https://github.com/paulschuberth/regex-extract-action/compare/v1.1.0...v1.1.1) (2023-05-01)
+
+
+### Miscellaneous 🧹
+
+* **deps:** update dependency @types/node to v18.16.3 ([73bfc5d](https://github.com/paulschuberth/regex-extract-action/commit/73bfc5da3db2c18073801339b056c1179ab3e7b0))
+* **deps:** update dependency prettier to v2.8.8 ([98f9a3a](https://github.com/paulschuberth/regex-extract-action/commit/98f9a3a00390f924021423f4fb1f49ce4b29e7ee))
+* **deps:** update dependency ts-jest to v27.1.5 ([a8c7bb9](https://github.com/paulschuberth/regex-extract-action/commit/a8c7bb990a7dad5f9e3c782fb649453228b9da7a))
+* **deps:** update dependency typescript to v5 ([8b25d9d](https://github.com/paulschuberth/regex-extract-action/commit/8b25d9d4d1c14b47506958f77c6232481824ed80))
+* **deps:** update jest monorepo to v29 ([b446500](https://github.com/paulschuberth/regex-extract-action/commit/b446500b4c20855e6b62a24e4db3baf33de0c36f))
+* **deps:** update typescript-eslint monorepo to v5.59.1 ([b3bf1fc](https://github.com/paulschuberth/regex-extract-action/commit/b3bf1fca651fe3d7085267f5bd445631bb627d10))
+* **renovate:** add `dependecies` label to renovate PRs ([6c8d21b](https://github.com/paulschuberth/regex-extract-action/commit/6c8d21b3600e14d1d07b37fd598210ee02ce60ce))
+* **renovate:** remove dependabot config ([662e895](https://github.com/paulschuberth/regex-extract-action/commit/662e895586d8a860f92f92c01bcdcc256cc67343))
+
 ## [1.1.0](https://github.com/paulschuberth/regex-extract-action/compare/v1.0.12...v1.1.0) (2023-04-22)
 
 
