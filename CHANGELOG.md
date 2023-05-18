@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.1.2](https://github.com/paulschuberth/regex-extract-action/compare/v1.1.1...v1.1.2) (2023-05-18)
+
+
+### Miscellaneous 🧹
+
+* **deps:** update dependency @types/node to v18.16.10 ([5b7770d](https://github.com/paulschuberth/regex-extract-action/commit/5b7770df77c5007f21f91915b129d57b79bf8ea9))
+* **deps:** update dependency @types/node to v18.16.12 ([ccfac43](https://github.com/paulschuberth/regex-extract-action/commit/ccfac4375fd0dd2d39760689d324a4ac9c3113af))
+* **deps:** update dependency @types/node to v18.16.13 ([0bbed2d](https://github.com/paulschuberth/regex-extract-action/commit/0bbed2d9a10ca184f5d185384771455775eefa42))
+* **deps:** update dependency @types/node to v18.16.5 ([620c9ea](https://github.com/paulschuberth/regex-extract-action/commit/620c9eafb6d3980e130dda6b3cd970c8f87efdeb))
+* **deps:** update dependency @types/node to v18.16.7 ([e933f44](https://github.com/paulschuberth/regex-extract-action/commit/e933f443e728b5b5eafdd38c1da1dc5058a9c332))
+* **deps:** update dependency @types/node to v18.16.8 ([82f2be3](https://github.com/paulschuberth/regex-extract-action/commit/82f2be35999f98faa08af0486788a3d4e023e9da))
+* **deps:** update dependency @types/node to v18.16.9 ([573c09c](https://github.com/paulschuberth/regex-extract-action/commit/573c09ccb06d0cf75b3871404da6ecddf6969da4))
+* **deps:** update dependency eslint to v8.40.0 ([7eca501](https://github.com/paulschuberth/regex-extract-action/commit/7eca5019b684c97108a67abe365fc9afd4d41e2d))
+* **deps:** update typescript-eslint monorepo to v5.59.2 ([86ca3ba](https://github.com/paulschuberth/regex-extract-action/commit/86ca3ba6e060b65c1d2146044afd6d3922f1d91c))
+* **deps:** update typescript-eslint monorepo to v5.59.5 ([c2776a7](https://github.com/paulschuberth/regex-extract-action/commit/c2776a7dd5581712336d6da703d27785c2d11a43))
+* **deps:** update typescript-eslint monorepo to v5.59.6 ([88858c1](https://github.com/paulschuberth/regex-extract-action/commit/88858c16cfecb95f5dd3e4018da8a99477251b84))
+
 ## [1.1.1](https://github.com/paulschuberth/regex-extract-action/compare/v1.1.0...v1.1.1) (2023-05-01)
 
 
