@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.1.3](https://github.com/paulschuberth/regex-extract-action/compare/v1.1.2...v1.1.3) (2023-06-14)
+
+
+### Miscellaneous 🧹
+
+* build using node 16 ([ab7eb6c](https://github.com/paulschuberth/regex-extract-action/commit/ab7eb6c32d923c40590d97621f73c8d1dd95b44b))
+* **deps:** update dependency @types/node to v18.16.14 ([0d7ca86](https://github.com/paulschuberth/regex-extract-action/commit/0d7ca86aed9e099dcd271bdcedeb672a6ef2430f))
+* **deps:** update dependency @types/node to v18.16.16 ([513c69d](https://github.com/paulschuberth/regex-extract-action/commit/513c69d241a361bb70dd661ca8d6d72e63d87c8c))
+* **deps:** update dependency @types/node to v18.16.17 ([a1f45c3](https://github.com/paulschuberth/regex-extract-action/commit/a1f45c3753e31893f489a3d77588102ec1d86aae))
+* **deps:** update dependency @types/node to v18.16.18 ([dc01e05](https://github.com/paulschuberth/regex-extract-action/commit/dc01e05a66e87f64412d4eed7279ca25080d02c4))
+* **deps:** update dependency eslint to v8.41.0 ([d52737e](https://github.com/paulschuberth/regex-extract-action/commit/d52737e65132d7aa74a904d73b038bdf7c29017c))
+* **deps:** update dependency eslint to v8.42.0 ([ce021c3](https://github.com/paulschuberth/regex-extract-action/commit/ce021c3c15562d5744312969a5ac65ccd99cc370))
+* **deps:** update dependency eslint-plugin-github to v4.8.0 ([3b50434](https://github.com/paulschuberth/regex-extract-action/commit/3b504342394590c0d7ebd79a8f80162c203bb5c8))
+* **deps:** update dependency typescript to v5.1.3 ([244d5b2](https://github.com/paulschuberth/regex-extract-action/commit/244d5b207283dd51c07b77566e1c5a4e63400e81))
+* **deps:** update typescript-eslint monorepo to v5.59.11 ([4afaee1](https://github.com/paulschuberth/regex-extract-action/commit/4afaee1ae6af02decc332c56aa9f0b52ab56415f))
+* **deps:** update typescript-eslint monorepo to v5.59.7 ([f3b4e18](https://github.com/paulschuberth/regex-extract-action/commit/f3b4e187b16350a7ac99cdc18245a4489231bd74))
+* **deps:** update typescript-eslint monorepo to v5.59.8 ([a6e4a26](https://github.com/paulschuberth/regex-extract-action/commit/a6e4a26f25f0a1ef7c9ddeb1014cde27a5b6601e))
+* **deps:** update typescript-eslint monorepo to v5.59.9 ([e5e3de4](https://github.com/paulschuberth/regex-extract-action/commit/e5e3de4e1218e2a5b802b582e58046db94d6094f))
+
 ## [1.1.2](https://github.com/paulschuberth/regex-extract-action/compare/v1.1.1...v1.1.2) (2023-05-18)
 
 
