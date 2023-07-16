@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.1.5](https://github.com/paulschuberth/regex-extract-action/compare/v1.1.4...v1.1.5) (2023-07-16)
+
+
+### Miscellaneous 🧹
+
+* add eslint-plugin-prettier ([84c6ac7](https://github.com/paulschuberth/regex-extract-action/commit/84c6ac74359ceb1305a27a9a68ed8adcf0ed66f1))
+* **deps:** update actions/setup-node action to v3.7.0 ([f3fa4db](https://github.com/paulschuberth/regex-extract-action/commit/f3fa4dbe951be1f214f1345aa3c301b6a6eb575b))
+* **deps:** update dependency eslint to v8.45.0 ([ebc6313](https://github.com/paulschuberth/regex-extract-action/commit/ebc631353d4190ecf6a346c7ba43a858a685e55f))
+* **deps:** update dependency eslint-plugin-github to v4.9.0 ([695aa56](https://github.com/paulschuberth/regex-extract-action/commit/695aa56033c507d01b46a7c674294a14c6dd17c1))
+* **deps:** update dependency eslint-plugin-jest to v27.2.3 ([7ce129b](https://github.com/paulschuberth/regex-extract-action/commit/7ce129b7e74b8f426bab03df81954a6631f4e074))
+* **deps:** update dependency jest to v29.6.0 ([2e12cc2](https://github.com/paulschuberth/regex-extract-action/commit/2e12cc2c2ea0e1a06963979c7ca3d2bcff9141ae))
+* **deps:** update dependency jest to v29.6.1 ([afda750](https://github.com/paulschuberth/regex-extract-action/commit/afda750199ce158bfbb7b8b6a46d68f0477ef435))
+* **deps:** update dependency prettier to v3 ([f205bef](https://github.com/paulschuberth/regex-extract-action/commit/f205bef918381b17ab842043b5cbbd071036902e))
+* **deps:** update typescript-eslint monorepo to v5.62.0 ([1d6eabc](https://github.com/paulschuberth/regex-extract-action/commit/1d6eabc1bbe9c51d9464ba4a3308c0943434b169))
+* **deps:** update typescript-eslint monorepo to v6 ([db0c0b7](https://github.com/paulschuberth/regex-extract-action/commit/db0c0b771b42d48e090f9344c76f7a7abd6fa329))
+
 ## [1.1.4](https://github.com/paulschuberth/regex-extract-action/compare/v1.1.3...v1.1.4) (2023-07-03)
 
 
