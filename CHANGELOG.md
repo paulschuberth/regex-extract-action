@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.6](https://github.com/paulschuberth/regex-extract-action/compare/v1.1.5...v1.1.6) (2023-07-18)
+
+
+### Miscellaneous 🧹
+
+* Configure Qodana Code Scanning ([04413b6](https://github.com/paulschuberth/regex-extract-action/commit/04413b6c58de3e0de13966bb3023b958940a05c7))
+* **deps:** update dependency eslint-plugin-github to v4.9.1 ([3fde678](https://github.com/paulschuberth/regex-extract-action/commit/3fde6786ed1cd6a00e6fdcbda0063601fceba30c))
+* **deps:** update dependency eslint-plugin-github to v4.9.2 ([bb16032](https://github.com/paulschuberth/regex-extract-action/commit/bb16032c94339a3ad274882efcfa73c0f9ebc68b))
+* **deps:** update typescript-eslint monorepo to v6.1.0 ([166f5cc](https://github.com/paulschuberth/regex-extract-action/commit/166f5cc1275af868621bfe7028cf8d83ed6633f6))
+
 ## [1.1.5](https://github.com/paulschuberth/regex-extract-action/compare/v1.1.4...v1.1.5) (2023-07-16)
 
 
