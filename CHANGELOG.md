@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.7](https://github.com/paulschuberth/regex-extract-action/compare/v1.1.6...v1.1.7) (2023-07-28)
+
+
+### Miscellaneous 🧹
+
+* **deps:** update dependency @types/node to v18.16.20 ([cfd4c8a](https://github.com/paulschuberth/regex-extract-action/commit/cfd4c8aeabf90bd21a24811b12693531b3e07c39))
+* **deps:** update dependency @types/node to v18.17.0 ([d2931c2](https://github.com/paulschuberth/regex-extract-action/commit/d2931c2a2445596c8d7198a5bb1bf03bc3188a75))
+* **deps:** update dependency @types/node to v18.17.1 ([f7eb603](https://github.com/paulschuberth/regex-extract-action/commit/f7eb60391a1ddad06f5a949a56da72124d328222))
+* **deps:** update dependency eslint to v8.46.0 ([5e24a3b](https://github.com/paulschuberth/regex-extract-action/commit/5e24a3bdd2018b06ea4d604c0631063ee5600e22))
+* **deps:** update dependency jest to v29.6.2 ([1590197](https://github.com/paulschuberth/regex-extract-action/commit/15901973da8ccd9048574d69b8f7af9afd19e038))
+* **deps:** update typescript-eslint monorepo to v6.2.0 ([4a98ec2](https://github.com/paulschuberth/regex-extract-action/commit/4a98ec2b60996010f592f36e5d6071299670d239))
+
 ## [1.1.6](https://github.com/paulschuberth/regex-extract-action/compare/v1.1.5...v1.1.6) (2023-07-18)
 
 
