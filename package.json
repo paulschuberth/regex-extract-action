@@ -1,6 +1,6 @@
 {
   "name": "regex-extract-action",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "private": true,
   "description": "GitHub Action to extract matches of a given regex from the input",
   "main": "lib/main.js",
