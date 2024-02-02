@@ -1,0 +1,36 @@
+name: "Example Workflow"
+
+on:
+  issues:
+    types: [ labeled ]
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Using defaults
+        uses: paulschuberth/regex-extract-action@v2
+        id: example-path
+        with:
+          haystack: ${{ github.event.issue.body }}
+          readmode: file
+    outputs:
+      issues: ${{ steps.example-path.outputs.matches }}
+
+  use-default-matches:
+    runs-on: ubuntu-latest
+    needs: [ extract ]
+    strategy:
+      matrix:
+        issue: ${{ fromJson(needs.extract-using-default-settings.outputs.issues) }}
+    steps:
+      - name: Use output of default settings
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `Found issue ${{ matrix.issue }}`
+            })

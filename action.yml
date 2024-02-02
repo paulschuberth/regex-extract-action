@@ -20,6 +20,12 @@ inputs:
     required: false
     default: ''
     description: 'Search haystack until first match for `until`'
+  read_mode:
+    required: false
+    default: 'plain'
+    description: |
+      Whether to interpret `haystack` as plain text or as file path.
+      Possible values `plain`, `file`
 outputs:
   matches:
     description: 'A JSON list of all found matches'
