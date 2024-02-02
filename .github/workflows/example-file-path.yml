@@ -1,4 +1,4 @@
-name: "Example Workflow"
+name: "Example Workflow file mode"
 
 on:
   issues:
@@ -8,12 +8,13 @@ jobs:
   extract:
     runs-on: ubuntu-latest
     steps:
-      - name: Using defaults
+      - uses: actions/checkout@v4
+      - name: Extract from file
         uses: paulschuberth/regex-extract-action@v2
         id: example-path
         with:
-          haystack: ${{ github.event.issue.body }}
-          readmode: file
+          haystack: resources/Lorem.md
+          read_mode: file
     outputs:
       issues: ${{ steps.example-path.outputs.matches }}
 
@@ -22,7 +23,7 @@ jobs:
     needs: [ extract ]
     strategy:
       matrix:
-        issue: ${{ fromJson(needs.extract-using-default-settings.outputs.issues) }}
+        issue: ${{ fromJson(needs.extract.outputs.issues) }}
     steps:
       - name: Use output of default settings
         uses: actions/github-script@v7
@@ -32,5 +33,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `Found issue ${{ matrix.issue }}`
+              body: `Found issue ${{ matrix.issue }} in file`
             })
