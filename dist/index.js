@@ -103,14 +103,19 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = void 0;
 const core = __importStar(__nccwpck_require__(186));
 const extractor_1 = __nccwpck_require__(609);
+const fs_1 = __nccwpck_require__(147);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const haystack = core.getInput('haystack');
+            let haystack = core.getInput('haystack');
             const mode = core.getInput('mode');
+            const readMode = core.getInput('read_mode');
             const customNeedle = core.getInput('needle');
             const untilInput = core.getInput('until');
             const until = untilInput ? new RegExp(untilInput, 'gmi') : undefined;
+            if (readMode === 'file') {
+                haystack = yield fs_1.promises.readFile(haystack, 'utf8');
+            }
             const matches = yield (0, extractor_1.extractor)(haystack, {
                 needle: new RegExp(customNeedle, 'gmi'),
                 until,
@@ -121,6 +126,7 @@ function run() {
             core.info(`Needle: ${customNeedle}`);
             core.info(`Until: ${until}`);
             core.info(`Mode: ${mode}`);
+            core.info(`Read mode: ${readMode}`);
             core.endGroup();
             core.startGroup('Outputs');
             core.info(`Matches: ${matches}`);
