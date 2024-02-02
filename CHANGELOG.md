@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/paulschuberth/regex-extract-action/compare/v2.0.0...v2.0.1) (2024-02-02)
+
+
+### Bug Fixes
+
+* Add missing input to action definition ([5560b0d](https://github.com/paulschuberth/regex-extract-action/commit/5560b0d8e5eec40accb2a248de1f995fe36a0ae4))
+
 ## [2.0.0](https://github.com/paulschuberth/regex-extract-action/compare/v1.1.13...v2.0.0) (2024-02-02)
 
 
