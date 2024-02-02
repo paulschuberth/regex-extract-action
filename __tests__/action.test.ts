@@ -3,6 +3,7 @@ import {readFileSync} from 'fs'
 import {JIRA_ISSUE} from '../src/extractor'
 import * as action from '../src/main'
 
+// Necessary to override getInput and setOutput behaviour
 const core = require('@actions/core')
 
 test('sets matches output', async () => {
@@ -12,16 +13,9 @@ test('sets matches output', async () => {
     needle: JIRA_ISSUE,
     haystack: content
   }
-  core.getInput = (name: any) => {
-    return input[name]
-  }
-  let output: any = {}
-  core.setOutput = (name: string, value: any) => {
-    output[name] = value
-  }
 
   // Act
-  await action.run()
+  let output: any = await runAction(input)
 
   // Assert
   expect(output['matches']).toHaveLength(3)
@@ -34,16 +28,9 @@ test('sets has_matches output to `true` for matches', async () => {
     needle: JIRA_ISSUE,
     haystack: content
   }
-  core.getInput = (name: any) => {
-    return input[name]
-  }
-  let output: any = {}
-  core.setOutput = (name: string, value: any) => {
-    output[name] = value
-  }
 
   // Act
-  await action.run()
+  let output: any = await runAction(input)
 
   // Assert
   expect(output['has_matches']).toBe(true)
@@ -56,16 +43,9 @@ test('sets has_matches output to `false` for no matches', async () => {
     needle: 'NOMATCH',
     haystack: content
   }
-  core.getInput = (name: any) => {
-    return input[name]
-  }
-  let output: any = {}
-  core.setOutput = (name: string, value: any) => {
-    output[name] = value
-  }
 
   // Act
-  await action.run()
+  let output: any = await runAction(input)
 
   // Assert
   expect(output['has_matches']).toBe(false)
@@ -78,16 +58,9 @@ test('reads custom regex from input', async () => {
     haystack: content,
     needle: 'Lorem'
   }
-  core.getInput = (name: any) => {
-    return input[name]
-  }
-  let output: any = {}
-  core.setOutput = (name: string, value: any) => {
-    output[name] = value
-  }
 
   // Act
-  await action.run()
+  let output: any = await runAction(input)
 
   // Assert
   expect(output['matches']).toHaveLength(1)
@@ -102,16 +75,9 @@ test('reads until regex from input', async () => {
     needle: JIRA_ISSUE,
     until: 'voluptua'
   }
-  core.getInput = (name: any) => {
-    return input[name]
-  }
-  let output: any = {}
-  core.setOutput = (name: string, value: any) => {
-    output[name] = value
-  }
 
   // Act
-  await action.run()
+  let output: any = await runAction(input)
 
   // Assert
   expect(output['matches']).toHaveLength(1)
@@ -126,16 +92,9 @@ test('reads mode all from input', async () => {
     needle: JIRA_ISSUE,
     mode: 'all'
   }
-  core.getInput = (name: any) => {
-    return input[name]
-  }
-  let output: any = {}
-  core.setOutput = (name: string, value: any) => {
-    output[name] = value
-  }
 
   // Act
-  await action.run()
+  let output: any = await runAction(input)
 
   // Assert
   expect(output['matches']).toHaveLength(4)
@@ -152,16 +111,9 @@ test('reads mode unique from input', async () => {
     needle: JIRA_ISSUE,
     mode: 'unique'
   }
-  core.getInput = (name: any) => {
-    return input[name]
-  }
-  let output: any = {}
-  core.setOutput = (name: string, value: any) => {
-    output[name] = value
-  }
 
   // Act
-  await action.run()
+  let output: any = await runAction(input)
 
   // Assert
   expect(output['matches']).toHaveLength(3)
@@ -178,16 +130,9 @@ test('reads mode first from input', async () => {
     needle: JIRA_ISSUE,
     mode: 'first'
   }
-  core.getInput = (name: any) => {
-    return input[name]
-  }
-  let output: any = {}
-  core.setOutput = (name: string, value: any) => {
-    output[name] = value
-  }
 
   // Act
-  await action.run()
+  let output: any = await runAction(input)
 
   // Assert
   expect(output['matches']).toHaveLength(1)
@@ -202,6 +147,16 @@ test('reads mode first from file at path', async () => {
     mode: 'first',
     read_mode: 'file'
   }
+
+  // Act
+  let output: any = await runAction(input)
+
+  // Assert
+  expect(output['matches']).toHaveLength(1)
+  expect(output['matches']).toContain('ABC-123')
+})
+
+async function runAction(input: any) {
   core.getInput = (name: any) => {
     return input[name]
   }
@@ -209,11 +164,6 @@ test('reads mode first from file at path', async () => {
   core.setOutput = (name: string, value: any) => {
     output[name] = value
   }
-
-  // Act
   await action.run()
-
-  // Assert
-  expect(output['matches']).toHaveLength(1)
-  expect(output['matches']).toContain('ABC-123')
-})
+  return output
+}
