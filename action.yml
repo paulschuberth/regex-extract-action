@@ -26,5 +26,5 @@ outputs:
   has_matches:
     description: 'Indicates whether any matches were found. Either `true` or `false`'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
