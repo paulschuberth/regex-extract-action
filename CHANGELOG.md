@@ -1,5 +1,34 @@
 # Changelog
 
+## [2.0.0](https://github.com/paulschuberth/regex-extract-action/compare/v1.1.13...v2.0.0) (2024-02-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* Use Node 20
+
+### Features
+
+* add `until` input to restrict the text in which to look for matches ([391810a](https://github.com/paulschuberth/regex-extract-action/commit/391810a5db6ab766f3db51f879d9ecc647bfb180))
+* Add option to read haystack from file at path ([b3af7f8](https://github.com/paulschuberth/regex-extract-action/commit/b3af7f8cdedf63a2f3b79434afb4a70f314a56bf))
+* Add output `has_matches` ([bc6868a](https://github.com/paulschuberth/regex-extract-action/commit/bc6868a0899206030c5a5c9db52e934a0649e3bb))
+
+
+### Bug Fixes
+
+* **actions:** Run update major version tag upon new release ([aa659f5](https://github.com/paulschuberth/regex-extract-action/commit/aa659f518ac28aa00902cf59fec44f64d1b6860b))
+* **deps:** update dependency @actions/core to v1.10.1 ([1f8760f](https://github.com/paulschuberth/regex-extract-action/commit/1f8760f219720836653dcb93ab862161a4bdea87))
+* Path to example worklow ([33cd045](https://github.com/paulschuberth/regex-extract-action/commit/33cd045ef6e2c770be1a07b0841c6bac225fcfd5))
+* Set output after extraction returned ([496db60](https://github.com/paulschuberth/regex-extract-action/commit/496db60e4fbef631f759c9b293d66dbfbf445872))
+* Set regex flags g, m, and i ([1ee13ab](https://github.com/paulschuberth/regex-extract-action/commit/1ee13aba3c68fd51d0626ac7d3c9c8a2abd80587))
+
+
+### Miscellaneous Chores
+
+* add release please ([640f8f4](https://github.com/paulschuberth/regex-extract-action/commit/640f8f43bdaba470e37cb1b23925508555837b2c))
+* Set version to 2.0.0 ([43d6eab](https://github.com/paulschuberth/regex-extract-action/commit/43d6eabb4c4aad345d1153edc08f3031c22df78c))
+* Use Node 20 ([f22d0c7](https://github.com/paulschuberth/regex-extract-action/commit/f22d0c7cbf7adc182bd8cfbeda134c61f7b7173e))
+
 ## [1.1.13](https://github.com/paulschuberth/regex-extract-action/compare/v1.1.12...v1.1.13) (2023-12-30)
 
 
