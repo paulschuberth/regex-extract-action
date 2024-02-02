@@ -193,3 +193,27 @@ test('reads mode first from input', async () => {
   expect(output['matches']).toHaveLength(1)
   expect(output['matches']).toContain('ABC-123')
 })
+
+test('reads mode first from file at path', async () => {
+  // Arrange
+  let input: any = {
+    haystack: 'resources/multi.txt',
+    needle: JIRA_ISSUE,
+    mode: 'first',
+    read_mode: 'file'
+  }
+  core.getInput = (name: any) => {
+    return input[name]
+  }
+  let output: any = {}
+  core.setOutput = (name: string, value: any) => {
+    output[name] = value
+  }
+
+  // Act
+  await action.run()
+
+  // Assert
+  expect(output['matches']).toHaveLength(1)
+  expect(output['matches']).toContain('ABC-123')
+})

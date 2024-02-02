@@ -48,5 +48,6 @@ export async function extractor(
 }
 
 export type Mode = 'unique' | 'all' | 'first'
+export type ReadMode = 'plain' | 'file'
 
 export const JIRA_ISSUE = /[A-Z]+-\d+/gim

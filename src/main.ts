@@ -1,13 +1,19 @@
 import * as core from '@actions/core'
-import {extractor, Mode} from './extractor'
+import {extractor, Mode, ReadMode} from './extractor'
+import {promises as fs} from 'fs'
 
 export async function run(): Promise<void> {
   try {
-    const haystack: string = core.getInput('haystack')
+    let haystack: string = core.getInput('haystack')
     const mode = core.getInput('mode') as Mode
+    const readMode = core.getInput('read_mode') as ReadMode
     const customNeedle: string = core.getInput('needle')
     const untilInput: string = core.getInput('until')
     const until = untilInput ? new RegExp(untilInput, 'gmi') : undefined
+
+    if (readMode === 'file') {
+      haystack = await fs.readFile(haystack, 'utf8')
+    }
 
     const matches = await extractor(haystack, {
       needle: new RegExp(customNeedle, 'gmi'),
@@ -20,6 +26,7 @@ export async function run(): Promise<void> {
     core.info(`Needle: ${customNeedle}`)
     core.info(`Until: ${until}`)
     core.info(`Mode: ${mode}`)
+    core.info(`Read mode: ${readMode}`)
     core.endGroup()
 
     core.startGroup('Outputs')
