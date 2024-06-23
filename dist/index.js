@@ -16,7 +16,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.JIRA_ISSUE = exports.extractor = void 0;
+exports.JIRA_ISSUE = void 0;
+exports.extractor = extractor;
 function reduceHaystack(haystack, until) {
     var _a;
     const matches = haystack.match(until);
@@ -56,7 +57,6 @@ function extractor(haystack, options) {
         });
     });
 }
-exports.extractor = extractor;
 exports.JIRA_ISSUE = /[A-Z]+-\d+/gim;
 
 
@@ -100,7 +100,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.run = void 0;
+exports.run = run;
 const core = __importStar(__nccwpck_require__(186));
 const extractor_1 = __nccwpck_require__(609);
 const fs_1 = __nccwpck_require__(147);
@@ -141,7 +141,6 @@ function run() {
         }
     });
 }
-exports.run = run;
 run();
 
 
