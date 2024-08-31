@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/paulschuberth/regex-extract-action/compare/v2.0.1...v2.0.2) (2024-08-31)
+
+
+### Bug Fixes
+
+* **release-please:** Change name of repo containing the release-please action ([6630052](https://github.com/paulschuberth/regex-extract-action/commit/6630052c44899e8766a1badb11828a257ec2ad8e))
+
 ## [2.0.1](https://github.com/paulschuberth/regex-extract-action/compare/v2.0.0...v2.0.1) (2024-02-02)
 
 
