@@ -27,7 +27,7 @@
   "author": "Paul Schuberth",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.10.0"
+    "@actions/core": "^1.11.1"
   },
   "devDependencies": {
     "@types/node": "^22.7.7",
