@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3](https://github.com/paulschuberth/regex-extract-action/compare/v2.0.2...v2.0.3) (2024-11-13)
+
+
+### Bug Fixes
+
+* release with updated dependencies ([882582d](https://github.com/paulschuberth/regex-extract-action/commit/882582d48569db5606769dc6c07c143816da5616))
+
 ## [2.0.2](https://github.com/paulschuberth/regex-extract-action/compare/v2.0.1...v2.0.2) (2024-08-31)
 
 
