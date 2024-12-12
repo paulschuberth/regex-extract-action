@@ -42,3 +42,5 @@ A boolean indicating whether any matches were found.
 
 The [example workflow](https://github.com/paulschuberth/regex-extract-action/blob/main/.github/workflows/example.yml) in
 this repo shows one example of how to use this action.
+
+
