@@ -1,13 +1,16 @@
 // @ts-check
 
 import eslint from '@eslint/js';
+import { defineConfig, globalIgnores } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 
-export default tseslint.config(
+export default defineConfig(
   eslint.configs.recommended,
+  tseslint.configs.recommended,
   ...tseslint.configs.strict,
   ...tseslint.configs.stylistic,
   {
-    files: ["src/**/*.ts"]
-  }
+    files: ['src/**/*.ts'],
+  },
+  globalIgnores(["lib/", "dist/", "jest.config.js"])
 );
