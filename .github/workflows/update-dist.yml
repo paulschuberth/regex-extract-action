@@ -18,7 +18,7 @@ jobs:
           ref: ${{ github.head_ref }}
           token: ${{ github.token }} # Replace github.token with PAT (personal access token) if you need to trigger a new workflow. https://git.io/JcHD9
       - name: Use Node.js v22.x
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: 22.x
           # It is not suggested to cache for the pull_request_target event
