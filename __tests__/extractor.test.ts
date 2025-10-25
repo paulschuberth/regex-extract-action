@@ -2,8 +2,6 @@ import {extractor} from '../src/extractor'
 import {expect, test} from '@jest/globals'
 import {readFileSync} from 'fs'
 
-const core = require('@actions/core')
-
 test('finds jira issues by default', async () => {
   const content = readFileSync('resources/single.txt', 'utf-8')
   const actual = await extractor(content)

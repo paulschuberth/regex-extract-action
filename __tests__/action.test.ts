@@ -3,19 +3,35 @@ import {readFileSync} from 'fs'
 import {JIRA_ISSUE} from '../src/extractor'
 import * as action from '../src/main'
 
-// Necessary to override getInput and setOutput behaviour
+// Necessary to override getInput and setOutput behavior
+/* eslint-disable @typescript-eslint/no-require-imports */
 const core = require('@actions/core')
+
+/* eslint-enable @typescript-eslint/no-require-imports */
+
+interface ActionInput {
+  needle: RegExp | string
+  haystack: string
+  until?: string
+  mode?: string
+  read_mode?: string
+}
+
+interface ActionOutput {
+  has_matches: boolean
+  matches: string[]
+}
 
 test('sets matches output', async () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
-  let input: any = {
+  const input: ActionInput = {
     needle: JIRA_ISSUE,
     haystack: content
   }
 
   // Act
-  let output: any = await runAction(input)
+  const output: ActionOutput = await runAction(input)
 
   // Assert
   expect(output['matches']).toHaveLength(3)
@@ -24,13 +40,13 @@ test('sets matches output', async () => {
 test('sets has_matches output to `true` for matches', async () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
-  let input: any = {
+  const input: ActionInput = {
     needle: JIRA_ISSUE,
     haystack: content
   }
 
   // Act
-  let output: any = await runAction(input)
+  const output: ActionOutput = await runAction(input)
 
   // Assert
   expect(output['has_matches']).toBe(true)
@@ -39,13 +55,13 @@ test('sets has_matches output to `true` for matches', async () => {
 test('sets has_matches output to `false` for no matches', async () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
-  let input: any = {
+  const input: ActionInput = {
     needle: 'NOMATCH',
     haystack: content
   }
 
   // Act
-  let output: any = await runAction(input)
+  const output: ActionOutput = await runAction(input)
 
   // Assert
   expect(output['has_matches']).toBe(false)
@@ -54,13 +70,13 @@ test('sets has_matches output to `false` for no matches', async () => {
 test('reads custom regex from input', async () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
-  let input: any = {
+  const input: ActionInput = {
     haystack: content,
     needle: 'Lorem'
   }
 
   // Act
-  let output: any = await runAction(input)
+  const output: ActionOutput = await runAction(input)
 
   // Assert
   expect(output['matches']).toHaveLength(1)
@@ -70,14 +86,14 @@ test('reads custom regex from input', async () => {
 test('reads until regex from input', async () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
-  let input: any = {
+  const input: ActionInput = {
     haystack: content,
     needle: JIRA_ISSUE,
     until: 'voluptua'
   }
 
   // Act
-  let output: any = await runAction(input)
+  const output: ActionOutput = await runAction(input)
 
   // Assert
   expect(output['matches']).toHaveLength(1)
@@ -87,14 +103,14 @@ test('reads until regex from input', async () => {
 test('reads mode all from input', async () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
-  let input: any = {
+  const input: ActionInput = {
     haystack: content,
     needle: JIRA_ISSUE,
     mode: 'all'
   }
 
   // Act
-  let output: any = await runAction(input)
+  const output: ActionOutput = await runAction(input)
 
   // Assert
   expect(output['matches']).toHaveLength(4)
@@ -106,14 +122,14 @@ test('reads mode all from input', async () => {
 test('reads mode unique from input', async () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
-  let input: any = {
+  const input: ActionInput = {
     haystack: content,
     needle: JIRA_ISSUE,
     mode: 'unique'
   }
 
   // Act
-  let output: any = await runAction(input)
+  const output: ActionOutput = await runAction(input)
 
   // Assert
   expect(output['matches']).toHaveLength(3)
@@ -125,14 +141,14 @@ test('reads mode unique from input', async () => {
 test('reads mode first from input', async () => {
   // Arrange
   const content = readFileSync('resources/multi.txt', 'utf-8')
-  let input: any = {
+  const input: ActionInput = {
     haystack: content,
     needle: JIRA_ISSUE,
     mode: 'first'
   }
 
   // Act
-  let output: any = await runAction(input)
+  const output: ActionOutput = await runAction(input)
 
   // Assert
   expect(output['matches']).toHaveLength(1)
@@ -141,7 +157,7 @@ test('reads mode first from input', async () => {
 
 test('reads mode first from file at path', async () => {
   // Arrange
-  let input: any = {
+  const input: ActionInput = {
     haystack: 'resources/multi.txt',
     needle: JIRA_ISSUE,
     mode: 'first',
@@ -149,19 +165,23 @@ test('reads mode first from file at path', async () => {
   }
 
   // Act
-  let output: any = await runAction(input)
+  const output: ActionOutput = await runAction(input)
 
   // Assert
   expect(output['matches']).toHaveLength(1)
   expect(output['matches']).toContain('ABC-123')
 })
 
-async function runAction(input: any) {
-  core.getInput = (name: any) => {
+async function runAction(input: ActionInput) {
+  core.getInput = (name: keyof ActionInput) => {
     return input[name]
   }
-  let output: any = {}
-  core.setOutput = (name: string, value: any) => {
+  const output: ActionOutput = {has_matches: false, matches: []}
+  core.setOutput = (
+    name: keyof ActionOutput,
+    value: ActionOutput[keyof ActionOutput]
+  ) => {
+    // @ts-expect-error It's okay here since we are _just_ using out own test types here.
     output[name] = value
   }
   await action.run()
