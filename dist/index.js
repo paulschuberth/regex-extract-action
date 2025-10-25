@@ -2,59 +2,46 @@ require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 972:
-/***/ (function(__unused_webpack_module, exports) {
+/***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.JIRA_ISSUE = void 0;
 exports.extractor = extractor;
 function reduceHaystack(haystack, until) {
-    var _a;
     const matches = haystack.match(until);
     if (!matches)
         return haystack;
-    const firstMatch = (_a = matches.at(0)) !== null && _a !== void 0 ? _a : '';
+    const firstMatch = matches.at(0) ?? '';
     const index = haystack.indexOf(firstMatch);
     return haystack.substring(0, index);
 }
-function extractor(haystack, options) {
-    return __awaiter(this, void 0, void 0, function* () {
-        return new Promise(resolve => {
-            var _a, _b, _c;
-            const needle = (_a = options === null || options === void 0 ? void 0 : options.needle) !== null && _a !== void 0 ? _a : exports.JIRA_ISSUE;
-            if (options === null || options === void 0 ? void 0 : options.until) {
-                haystack = reduceHaystack(haystack, options.until);
+async function extractor(haystack, options) {
+    return new Promise(resolve => {
+        const needle = options?.needle ?? exports.JIRA_ISSUE;
+        if (options?.until) {
+            haystack = reduceHaystack(haystack, options.until);
+        }
+        const matches = haystack.match(needle) ?? [];
+        const mode = options?.mode ?? 'unique';
+        if (mode === 'first') {
+            const firstMatch = matches[0];
+            if (firstMatch) {
+                resolve([firstMatch]);
             }
-            const matches = (_b = haystack.match(needle)) !== null && _b !== void 0 ? _b : [];
-            const mode = (_c = options === null || options === void 0 ? void 0 : options.mode) !== null && _c !== void 0 ? _c : 'unique';
-            if (mode === 'first') {
-                const firstMatch = matches[0];
-                if (firstMatch) {
-                    resolve([firstMatch]);
-                }
-                else {
-                    resolve([]);
-                }
-                return;
+            else {
+                resolve([]);
             }
-            if (mode === 'all') {
-                resolve(matches);
-                return;
-            }
-            // Default
-            const uniques = [...new Set(matches)];
-            resolve(uniques);
-        });
+            return;
+        }
+        if (mode === 'all') {
+            resolve(matches);
+            return;
+        }
+        // Default
+        const uniques = [...new Set(matches)];
+        resolve(uniques);
     });
 }
 exports.JIRA_ISSUE = /[A-Z]+-\d+/gim;
@@ -100,56 +87,45 @@ var __importStar = (this && this.__importStar) || (function () {
         return result;
     };
 })();
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = run;
 const core = __importStar(__nccwpck_require__(484));
 const extractor_1 = __nccwpck_require__(972);
 const fs_1 = __nccwpck_require__(896);
-function run() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            let haystack = core.getInput('haystack');
-            const mode = core.getInput('mode');
-            const readMode = core.getInput('read_mode');
-            const customNeedle = core.getInput('needle');
-            const untilInput = core.getInput('until');
-            const until = untilInput ? new RegExp(untilInput, 'gmi') : undefined;
-            if (readMode === 'file') {
-                haystack = yield fs_1.promises.readFile(haystack, 'utf8');
-            }
-            const matches = yield (0, extractor_1.extractor)(haystack, {
-                needle: new RegExp(customNeedle, 'gmi'),
-                until,
-                mode
-            });
-            core.startGroup('Inputs');
-            core.info(`Haystack: ${haystack}`);
-            core.info(`Needle: ${customNeedle}`);
-            core.info(`Until: ${until}`);
-            core.info(`Mode: ${mode}`);
-            core.info(`Read mode: ${readMode}`);
-            core.endGroup();
-            core.startGroup('Outputs');
-            core.info(`Matches: ${matches}`);
-            core.endGroup();
-            const hasMatches = matches.length > 0;
-            core.setOutput('has_matches', hasMatches);
-            core.setOutput('matches', matches);
+async function run() {
+    try {
+        let haystack = core.getInput('haystack');
+        const mode = core.getInput('mode');
+        const readMode = core.getInput('read_mode');
+        const customNeedle = core.getInput('needle');
+        const untilInput = core.getInput('until');
+        const until = untilInput ? new RegExp(untilInput, 'gmi') : undefined;
+        if (readMode === 'file') {
+            haystack = await fs_1.promises.readFile(haystack, 'utf8');
         }
-        catch (error) {
-            if (error instanceof Error)
-                core.setFailed(error.message);
-        }
-    });
+        const matches = await (0, extractor_1.extractor)(haystack, {
+            needle: new RegExp(customNeedle, 'gmi'),
+            until,
+            mode
+        });
+        core.startGroup('Inputs');
+        core.info(`Haystack: ${haystack}`);
+        core.info(`Needle: ${customNeedle}`);
+        core.info(`Until: ${until}`);
+        core.info(`Mode: ${mode}`);
+        core.info(`Read mode: ${readMode}`);
+        core.endGroup();
+        core.startGroup('Outputs');
+        core.info(`Matches: ${matches}`);
+        core.endGroup();
+        const hasMatches = matches.length > 0;
+        core.setOutput('has_matches', hasMatches);
+        core.setOutput('matches', matches);
+    }
+    catch (error) {
+        if (error instanceof Error)
+            core.setFailed(error.message);
+    }
 }
 run();
 
