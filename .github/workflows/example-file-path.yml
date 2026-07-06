@@ -26,7 +26,7 @@ jobs:
         issue: ${{ fromJson(needs.extract.outputs.issues) }}
     steps:
       - name: Use output of default settings
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             github.rest.issues.createComment({
